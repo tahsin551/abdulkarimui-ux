@@ -83,57 +83,91 @@ body {
 
 
 /* Navbar Glass Effect */
+/* Make navbar sticky and full-width */
 .navbar {
-  position:sticky;
+  position: fixed;
   top: 0;
+  width: 100%;
   z-index: 999;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05); /* translucent */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px); /* Safari support */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   border-radius: 0 0 16px 16px;
 }
 
-/* Nav Links */
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 1.5rem;
+
+/* Prevent layout shift due to fixed navbar */
+body {
+  padding-top: 70px;
 }
 
-.nav-links {
-  position: relative;
+/* Hamburger menu toggle (hidden input) */
+.menu-toggle {
+  display: none;
+}
+
+/* Hamburger icon */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    height: calc(100vh - 70px);
+    background: #111;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 1.5rem;
+    width: 220px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+  }
+
+  .menu-toggle:checked + .hamburger + .nav-links {
+    transform: translateX(0);
+  }
+
+  .talk-btn {
+    display: none;
+  }
+
+  .nav-links li {
+    margin: 1rem 0;
+  }
+}
+
+/* Scroll underline hover effect */
+.nav-links a {
   color: #ddd;
   text-decoration: none;
+  position: relative;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
-.nav-links:hover {
+.nav-links a:hover {
   color: #fff;
-      animation: bounceScrollDown 0.6s ease;
+  text-shadow: 0 0 8px #c32148, 0 0 16px #c32148;
 }
 
-/* Scroll underline hover effect */
-.nav-links::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: linear-gradient(to right, #c32148, #ff4c79);
-  transition: width 0.4s ease-in-out;
-}
-
-.nav-links:hover::after {
-  width: 100%;
-}
 .menu-toggle {
   display: none;
 }
