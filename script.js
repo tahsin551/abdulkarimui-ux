@@ -54,4 +54,15 @@ scrollBtn.addEventListener("click", () => {
 });
 
 
+  const scrollContainer = document.getElementById("certScroll");
+  const scrollLeftBtn = document.getElementById("scroll-left");
+  const scrollRightBtn = document.getElementById("scroll-right");
+
+  scrollLeftBtn.addEventListener("click", () => {
+    scrollContainer.scrollBy({ left: -300, behavior: "smooth" });
+  });
+
+  scrollRightBtn.addEventListener("click", () => {
+    scrollContainer.scrollBy({ left: 300, behavior: "smooth" });
+  });
 
