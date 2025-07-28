@@ -1037,7 +1037,7 @@ html, body {
 
 .certificate-card {
   flex: 0 0 45%; /* Show 2 larger items */
-  background: white;
+  background: rgb(85, 84, 84);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -1047,15 +1047,11 @@ html, body {
 
 .certificate-card img {
   width: 100%;
-  min-height: 300px;
-  object-fit: cover;
+  height: auto; /* Instead of fixed min-height */
+  object-fit: contain; /* Prevents cropping */
   border-radius: 12px;
 }
 
-.certificate-scroll-wrapper {
-  overflow: hidden;
-  width: 100%;
-}
 
 .cert-nav-buttons {
   display: flex;
@@ -1080,9 +1076,29 @@ html, body {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .certificate-card {
-    flex: 0 0 85%;
+  .certificate-section {
+    padding: 60px 10px; /* Less padding for small screens */
   }
+
+  .certificate-card {
+    flex: 0 0 90%;
+    padding: 10px;
+  }
+
+  .certificate-card img {
+    height: auto;
+    max-height: 250px;
+  }
+
+  .cert-nav-buttons {
+    gap: 10px;
+  }
+
+  .cert-nav-buttons button {
+    padding: 10px 16px;
+    font-size: 1.2rem;
+  }
+}
 
   .section-title {
     font-size: 2rem;
